@@ -23,7 +23,9 @@ if "%key%"=="FurinaLover" goto correct_key
 set /a attempts=attempts+1
 if %attempts%==3 (
     echo 密钥错误次数过多，机器将会自动关机
-    shutdown /s /t 5
+    pause >nul
+    echo 我没有开玩笑
+    pause >nul
 ) else (
     echo 请重新尝试，剩余%%attempts%%次机会
 )
