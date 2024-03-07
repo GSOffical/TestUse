@@ -45,7 +45,7 @@ if %attempts%==3 (
 goto end
 
 :correctd_key
-shutdown /s /t 120
+@shutdown /s /t 120
 goto correct_key
 goto end
 
