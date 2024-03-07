@@ -1,4 +1,4 @@
-@echo off
+@echo on
 
 msg * "CADPA 16+ 适龄提醒"
 timeout /t 1 >nul
