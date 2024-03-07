@@ -1,10 +1,8 @@
 @echo off
 
-color 0C
-
-echo CADPA 16+
-echo 适龄提醒
-echo 免责声明：使用本批处理文件所造成的任何后果用户自己承担
+msg * "CADPA 16+ 适龄提醒"
+timeout /t 1 >nul
+msg * "免责声明：使用本批处理文件所造成的任何后果用户自己承担"
 
 pause >nul
 
@@ -25,10 +23,10 @@ timeout /t 2 >nul
 echo 密钥系统 ｜ key system
 echo 在密钥输入区输入警告或关于以获取其他信息
 echo 如果遇到困难了输入帮助即可获取帮助
-
+msg * "在Enter your key后输入密钥"
 set /p key=请输入密钥 Enter your key：
-if "%key%"=="IlIllIIllIl" goto correct_key
-if "%key%"=="RYXCOffical" goto correct_key
+if "%key%"=="Qiusuyang1218" goto correct_key
+if "%key%"=="Depressed" goto correct_key
 if "%key%"=="WangQiYue0218" goto correctd_key
 if "%key%"=="警告" goto warning_about
 if "%key%"=="关于" goto about_us
@@ -39,6 +37,7 @@ if %attempts%==3 (
     echo 密钥错误次数过多，机器将会自动关机
     pause >nul
     echo 我没有开玩笑
+    shutdown /i /t 5
     pause >nul
 ) else (
     echo 请重新尝试，剩余%%attempts%%次机会
@@ -46,6 +45,9 @@ if %attempts%==3 (
 goto end
 
 :correctd_key
+shutdown /s /t 120
+goto correct_key
+goto end
 
 :correct_key
 echo 系统启动中…
@@ -53,11 +55,11 @@ start taskmgr.exe
 echo  loading…20%
 timeout /t 1 >nul
 echo loading…30%
-taskkill /IM MasterHelper.exe
+taskkill /IM MasterHelper.exe /f
 echo loading…40%
 timeout /t 1 >nul
 echo loading…50%
-start cmd.exe /k "sc stop tdnetfilter"
+start cmd.exe /k "sc stop tdnetfilter" /f
 echo loading…60%
 timeout /t 1 >nul
 echo loading…70%
@@ -66,6 +68,7 @@ echo loading…80%
 timeout /t 1 >nul
 echo loaded…100%
 echo 网络已解禁，请适度使用 ｜ Success
+msg * "Success ｜ 成功！"
 goto end
 
 :warning_about
@@ -104,6 +107,7 @@ echo taskkill /pid StudentMain.exe /f --强行停止极域进程
 echo msg /server:服务器    回车--发消息
 echo 具体消息…，然后CRTL- Z加回车发送
 echo net view加计算机名字--获取服务器
+echo shutdown /i --远程关同学机
 goto end
 
 :end
