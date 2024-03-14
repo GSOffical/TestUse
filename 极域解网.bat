@@ -1,4 +1,4 @@
-@echo on
+@echo off
 
 msg * "CADPA 16+ 适龄提醒"
 timeout /t 1 >nul
@@ -24,28 +24,32 @@ echo 密钥系统 ｜ key system
 echo 在密钥输入区输入警告或关于以获取其他信息
 echo 如果遇到困难了输入帮助即可获取帮助
 msg * "在Enter your key后输入密钥"
+goto enter_key
+
+:enter_key
 set /p key=请输入密钥 Enter your key：
 if "%key%"=="Qiusuyang1218" goto correct_key
-if "%key%"=="Depressed" goto correct_key
+if "%key%"=="Depressed0304" goto correct_key
 if "%key%"=="WangQiYue0218" goto correctd_key
+if "%key%"=="slsj" goto correctd_key
 if "%key%"=="警告" goto warning_about
 if "%key%"=="关于" goto about_us
 if "%key%"=="帮助" goto find_help
 if "%key%"=="admin" goto admin_user_read
 set /a attempts=attempts+1
 if %attempts%==3 (
-    echo 密钥错误次数过多，机器将会自动关机
+    msg * "密钥错误次数过多，机器将会自动关机"
     pause >nul
-    echo 我没有开玩笑
+    msg * "我没有开玩笑"
     shutdown /i /t 5
-    pause >nul
 ) else (
-    echo 请重新尝试，剩余%%attempts%%次机会
+    msg * 请重新尝试，剩余%%attempts%%次机会
+    goto enter_key
 )
 goto end
 
 :correctd_key
-@shutdown /s /t 120
+msg * "欢迎使用，亲爱的(花火留的小彩蛋，仅你可见哟～)"
 goto correct_key
 goto end
 
@@ -81,11 +85,11 @@ echo 感谢您的理解
 goto end
 
 :about_us
-echo 关于我们
+echo - - - - -关于我们- - - - -
 echo Furina--技术支持
 echo Github--平台支持
 echo Nahida--技术支持
-echo Lumin --资金支持
+echo Lumine--资金支持
 echo - - - - -联系我们- - - - -
 echo syteamq311@gmail.com-邮箱
 echo QQ:1924467894
